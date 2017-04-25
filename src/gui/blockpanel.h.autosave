@@ -1,0 +1,30 @@
+#ifndef BLOCKPANEL_H
+#define BLOCKPANEL_H
+
+#include "block.h"
+#include "blocks/arpeggiator.h"
+#include "blocks/chordify.h"
+#include "blocks/gate.h"
+#include "blocks/monophonic.h"
+#include "blocks/pitchshift.h"
+
+#include <QWidget>
+#include <QList>
+#include <QFrame>
+
+class BlockPanel : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit BlockPanel(QWidget *parent = 0);
+    
+private:
+    QList<Block*> blocks = {};
+    QFrame* blockContainer;
+
+signals:
+
+public slots:
+};
+
+#endif // BLOCKCONTAINER_H

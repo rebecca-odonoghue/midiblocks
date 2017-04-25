@@ -1,0 +1,28 @@
+#ifndef BLOCKCONTAINER_H
+#define BLOCKCONTAINER_H
+
+#include "block.h"
+#include "blocks/arpeggiator.h"
+#include "blocks/chordify.h"
+#include "blocks/gate.h"
+#include "blocks/monophonic.h"
+#include "blocks/pitchshift.h"
+
+#include <QWidget>
+#include <QList>
+
+class BlockContainer : public QWidget
+{
+    Q_OBJECT
+public:
+    explicit BlockContainer(QWidget *parent = 0);
+    
+private:
+    QList<Block*> blocks = {};
+
+signals:
+
+public slots:
+};
+
+#endif // BLOCKCONTAINER_H

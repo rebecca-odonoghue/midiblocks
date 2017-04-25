@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/metronome">
+        <file>High_tick.wav</file>
+        <file>Low_tick.wav</file>
+    </qresource>
+</RCC>

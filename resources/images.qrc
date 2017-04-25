@@ -1,0 +1,45 @@
+<RCC>
+    <qresource prefix="/keyboard">
+        <file>black_key.jpg</file>
+        <file>black_key_active.jpg</file>
+        <file>white_key_active.jpg</file>
+        <file>piano_border.jpg</file>
+        <file>white_key.jpg</file>
+        <file>black_key_disabled.jpg</file>
+        <file>white_key_disabled.jpg</file>
+        <file>black_root.png</file>
+        <file>white_root.png</file>
+    </qresource>
+    <qresource prefix="/metronome">
+        <file>metronome_active.png</file>
+        <file>metronome_inactive.png</file>
+        <file>metronome_special_active.png</file>
+        <file>metronome_special_inactive.png</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>Add File-26.png</file>
+        <file>Delete-26.png</file>
+        <file>Export-26.png</file>
+        <file>Import-26.png</file>
+        <file>Left Arrow-26.png</file>
+        <file>Open Folder-26.png</file>
+        <file>Play-26.png</file>
+        <file>Right Arrow-26.png</file>
+        <file>Save-26.png</file>
+        <file>Stop-26.png</file>
+        <file>Undo-26.png</file>
+        <file>Record-24.png</file>
+        <file>arrow_left.png</file>
+        <file>arrow_right.png</file>
+        <file>double_arrow_left.png</file>
+        <file>double_arrow_right.png</file>
+        <file>Medium Volume Filled-25.png</file>
+        <file>Mute Filled-25.png</file>
+        <file>Plus Math-26.png</file>
+        <file>More-24.png</file>
+        <file>Checkmark-26.png</file>
+        <file>Redo-26.png</file>
+        <file>logo.png</file>
+    </qresource>
+    <qresource prefix="/"/>
+</RCC>

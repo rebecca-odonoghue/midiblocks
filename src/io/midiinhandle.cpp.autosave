@@ -1,0 +1,66 @@
+#include "midifileinput.h"
+
+#include <QDebug>
+
+MidiInHandle::MidiInHandle(QString fileName) : InputHandle()
+{
+    this->fileName = fileName;
+    this->isStopped = true;
+    this->tempoBPM = 120.0;
+    inputFile = new MidiFile();
+    inputFile->deltaTicks();
+    inputFile->read(fileName.toStdString());
+    ticksPerQuarter = inputFile->getTicksPerQuarterNote();
+    this->tempoSPT = 0.5/ticksPerQuarter;
+
+}
+
+void MidiInHandle::start() {
+    if(!inputFile->status()) {
+        qDebug() << "Error reading MIDI file.";
+    } else {
+        isStopped = false;
+        readMessages();
+        foreach(int time, times) {
+            QTimer::singleShot(time*tempoSPT*1000, this, &MidiInHandle::sendMessage);
+        }
+    }
+}
+
+void MidiInHandle::readMessages() {   
+    qDebug() << "MidiInHandle::readMessages";
+    for (int i = 0; i < inputFile[0][0].size(); i++) {
+        MidiEvent event = inputFile->getEvent(0, i);
+        if (event.isNote()) {
+            messageIndexes.enqueue(i);
+            times.enqueue(event.tick);
+        }
+    }
+}
+
+void MidiInHandle::sendMessage() {
+    if(!isStopped) {
+        qDebug() << "MidiInHandle::sendMessage";
+        int eventIndex = messageIndexes.dequeue();
+        MidiEvent message = inputFile->getEvent(0, eventIndex);
+        if (message.isNoteOn()) {
+            emit sendNoteOn(message.getKeyNumber() - 23);
+        } else if (message.isNoteOff()) {
+            emit sendNoteOff(message.getKeyNumber() - 23);
+        }
+
+        if(messageIndexes.isEmpty()) {
+            stop();
+        }
+    }
+
+}
+
+void MidiInHandle::stop() {
+    if(!isStopped) {
+        qDebug() << "MidiInHandle::stop";
+        isStopped = true;
+        //messageIndexes.clear();
+        //times.clear();
+    }
+}

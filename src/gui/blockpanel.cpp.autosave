@@ -1,0 +1,24 @@
+#include "blockpanel.h"
+
+BlockPanel::BlockPanel(QWidget *parent) : QWidget(parent)
+{
+    setAutoFillBackground(true);
+    setPalette(QPalette(QPalette::Background, Qt::white));
+    QHBoxLayout* containerLayout = new QHBoxLayout();
+
+    QLabel* inp = new QLabel("Input");
+    QLabel* out = new QLabel("Output");
+    QWidget* spacer = new QWidget();
+    blockContainer = new QFrame(contentFrame);
+    QHBoxLayout* blockLayout = new QHBoxLayout();
+    blockContainer->setLayout(blockLayout);
+    spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+
+    containerLayout->addWidget(inp);
+    containerLayout->addWidget(blockContainer);
+    containerLayout->addWidget(spacer);
+    containerLayout->addWidget(out);
+    contentFrame->setLayout(containerLayout);
+    ui->blockScrollArea->setWidget(contentFrame);
+}
+

@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SelectInput</class>
+ <widget class="QDialog" name="SelectInput">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>391</width>
+    <height>236</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Select Input</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QRadioButton" name="pianoButton">
+        <property name="text">
+         <string>Piano</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_2">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="midiFileButton">
+        <property name="text">
+         <string>MIDI File</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QSplitter" name="splitter">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <widget class="QLineEdit" name="fileSelect">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="placeholderText">
+          <string>Input File Path</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="browseButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>65</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Browse...</string>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <spacer name="verticalSpacer">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="midiDriverButton">
+        <property name="text">
+         <string>Windows MIDI Driver</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="portSelect">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <item>
+         <property name="text">
+          <string>Select MIDI Input Port</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>SelectInput</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>248</x>
+     <y>254</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>157</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>SelectInput</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>316</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>286</x>
+     <y>274</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>midiDriverButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>portSelect</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>192</x>
+     <y>217</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>192</x>
+     <y>241</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>midiFileButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>fileSelect</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>195</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>160</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>midiFileButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>browseButton</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>195</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>339</x>
+     <y>108</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>browseButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SelectInput</receiver>
+   <slot>browse()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>339</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>195</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pianoButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SelectInput</receiver>
+   <slot>checkValid()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>195</x>
+     <y>40</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>195</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>midiFileButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SelectInput</receiver>
+   <slot>checkValid()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>195</x>
+     <y>82</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>195</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>midiDriverButton</sender>
+   <signal>clicked()</signal>
+   <receiver>SelectInput</receiver>
+   <slot>checkValid()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>195</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>195</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fileSelect</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>SelectInput</receiver>
+   <slot>checkValid()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>160</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>195</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>portSelect</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>SelectInput</receiver>
+   <slot>checkValid()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>195</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>195</x>
+     <y>117</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>browse()</slot>
+  <slot>checkValid()</slot>
+ </slots>
+</ui>
